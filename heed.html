@@ -1,115 +1,75 @@
 <div class="sheet-wrapper">
     <div class="sheet-heading">
         <span>Name:&nbsp;<input type="text" name="attr_character_name" value="Knave"/></span>
-        
-       </div>
+    </div>
     <div class="sheet-exp">
-       
-        <span><span>Level:</span>
+        <span>Level:</span>
         <input class="sheet-wide" type="number" name="attr_level" value="1" />
         </span>
-        <span><span>Experience:</span>
+        <span>Experience:</span>
         <input class="sheet-wide" type="number" name="attr_exp" value="0" />
         </span>
-        <span><span>Alignment:</span>
-        <input class="sheet-wide" type="text" name="attr_align" value="" />
-        </span>
-        <span><span>Gold in Stash:</span>
+        <span>Coin in stash:</span>
         <input class="sheet-wide" type="number" name="attr_gold" value="0" />
         </span>
     </div>
     <div class="sheet-str">
-        <span class="sheet-att-name">Str:&nbsp;<input type="number" name="attr_strength" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Strength:=[[1d20 + @{strengthmod}]]}}' name='roll_strcheck' />&nbsp;+&nbsp;<input type="number" name="attr_strengthmod" value="@{strength}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Str:&nbsp;<input type="number" name="attr_strength" value="0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled STR}} {{Strength:=[[1d8 + @{strength}]]}}' name='roll_strcheck' /></span>
     </div>
     <div class="sheet-dex">
-        <span class="sheet-att-name">Dex:&nbsp;<input type="number" name="attr_dexterity" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Dexterity:=[[1d20 + @{dexteritymod}]]}}' name='roll_dexcheck' />&nbsp;+&nbsp;<input type="number" name="attr_dexteritymod" value="@{dexterity}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Dex:&nbsp;<input type="number" name="attr_dexterity" value="0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled DEX}} {{Dexterity:=[[1d8 + @{dexterity}]]}}' name='roll_dexcheck' /></span>
     </div>
         <div class="sheet-con">
-        <span class="sheet-att-name">Con:&nbsp;<input type="number" name="attr_constitution" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Constitution:=[[1d20 + @{constitutionmod}]]}}' name='roll_concheck' />&nbsp;+&nbsp;<input type="number" name="attr_constitutionmod" value="@{constitution}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Con:&nbsp;<input type="number" name="attr_constitution" value="0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled CON}} {{Constitution:=[[1d8 + @{constitution}]]}}' name='roll_concheck' /></span>
     </div>
     <div class="sheet-int">
-        <span class="sheet-att-name">Int:&nbsp;<input type="number" name="attr_intelligence" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Intelligence:=[[1d20 + @{intelligencemod}]]}}' name='roll_intcheck' />&nbsp;+&nbsp;<input type="number" name="attr_intelligencemod" value="@{intelligence}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Int:&nbsp;<input type="number" name="attr_intelligence" value=0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled INT}} {{Intelligence:=[[1d8 + @{intelligence}]]}}' name='roll_intcheck' /></span>
     </div>
     <div class="sheet-wis">
-        <span class="sheet-att-name">Wis:&nbsp;<input type="number" name="attr_wisdom" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Wisdom:=[[1d20 + @{wisdommod}]]}}' name='roll_wischeck' />&nbsp;+&nbsp;<input type="number" name="attr_wisdommod" value="@{wisdom}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Wis:&nbsp;<input type="number" name="attr_wisdom" value="0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled WIS}} {{Wisdom:=[[1d8 + @{wisdom}]]}}' name='roll_wischeck' /></span>
     </div>
     <div class="sheet-cha">
-        <span class="sheet-att-name">Cha:&nbsp;<input type="number" name="attr_charisma" value="10"/></span>
-        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled an Ability Check!}} {{Charisma:=[[1d20 + @{charismamod}]]}}' name='roll_chacheck' />&nbsp;+&nbsp;<input type="number" name="attr_charismamod" value="@{charisma}-10" disabled="true"/></span>
+        <span class="sheet-att-name">Cha:&nbsp;<input type="number" name="attr_charisma" value="0"/></span>
+        <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled CHA}} {{Charisma:=[[1d8 + @{charisma}]]}}' name='roll_chacheck' /></span>
     </div>
     <div class="sheet-hps">
         <span>Hit Points</span>
         <span>Current:&nbsp;<input type="number" name="attr_hp" value="1"/></span>
         <span>Max HP:&nbsp;<input type="number" name="attr_hp_max" value="1"/></span>
-        
     </div>
-       <div class="sheet-morale">
-        <span>NPC Morale</span>
-        <span>Break:&nbsp;<input type="number" name="attr_morale" value="7"/>
-        Check:<button class="sheet-morale-check" type='roll' value='&{template:default} {{name= @{character_name} Morale Break Check}} {{Break if Greater than [[@{morale}+?{modifier|0}]]:=[[2d6]]}}' name='roll_morale'></button></span>
+    <div class="sheet-defence">
+        Defence
+     <span class="sheet-defence1">Defence: &nbsp;<input type="number" name="attr_defence" value="0"/></span>
     </div>
-
-    <div class="sheet-armor">
-        Armor
-     <span class="sheet-armor1">Worn/Base: &nbsp;<input type="number" name="attr_armorbase" value="10"/></span>
-      <span class="">Speed: &nbsp;<input type="number" name="attr_speed" value="40"/></span>
-        <span><input type='checkbox' name='attr_hashelm' value='1' />&nbsp;Helm</span>
-        <span><input type='checkbox' name='attr_hasshield' value='1' />&nbsp;Shield</span>
-        <span>Total AC: &nbsp;<input type="number" name="attr_armorclass" value="[[@{armorbase}+@{hasshield}+@{hashelm}]]" disabled="true"/></span>
-        <span><input type='hidden' name='attr_actotal' value='0'></span>
-    </div>
-
     <div class="sheet-attacks">
-        &nbsp;Melee Weapon&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;+Attack&emsp;&emsp;&emsp;&emsp;&emsp;Damage 
+        &nbsp;Melee Weapon
         <span class="sheet-attack-slot">
               <input class="sheet-attack-roll1" type="number" name="attr_melee_bonus1" value="0"/>
-              <button class="sheet-att-bon" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_1_desc}!}} {{Combat=Melee (Strength)}}{{to hit=[[1d20+@{strengthmod}+@{melee_bonus1}]]}}' name='roll_meleeattack1'></button>
+              <button class="sheet-att-bon" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_1_desc}}} {{Combat=Melee (Strength)}}{{to hit=[[1d8+@{strength}]]}}' name='roll_meleeattack1'></button>
               <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_1_desc}!}} {{Dealing=[[@{attack_1_damage}]] Damage}}' name='roll_attack_1'></button>
               <input class="sheet-attack-descr" type="text" name="attr_attack_1_desc" value="[Melee Weapon Name]"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_1_damage" value="1d8"/>
-          </span>
-        <span class="sheet-attack-slot">
-              <input class="sheet-attack-roll2" type="number" name="attr_melee_bonus2" value="0"/>
-              <button class="sheet-att-bon" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_2_desc}!}} {{Combat=Melee (Strength)}}{{to hit=[[1d20+@{strengthmod}+@{melee_bonus2}]]}}' name='roll_meleeattack2'></button>
-              <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_2_desc}!}} {{Dealing=[[@{attack_2_damage}]] Damage}}' name='roll_attack_2'></button>
-              <input class="sheet-attack-descr" type="text" name="attr_attack_2_desc" value="Improvised Melee Weapon"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_2_damage" value="1d6"/>
-          </span>
-        <span class="sheet-attack-slot">
-              <input class="sheet-attack-roll3" type="number" name="attr_melee_bonus3" value="0"/>
-              <button class="sheet-att-bon" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_3_desc}!}} {{Combat=Melee (Strength)}}{{to hit=[[1d20+@{strengthmod}+@{melee_bonus3}]]}}' name='roll_meleeattack3'></button>
-              <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_3_desc}!}} {{Dealing=[[@{attack_3_damage}]] Damage}}' name='roll_attack_3'></button>
-              <input class="sheet-attack-descr" type="text" name="attr_attack_3_desc" value="Punch/Kick"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_3_damage" value="1d2"/>
-          </span>
-          <span class="sheet-top-break">&nbsp;Ranged Weapon&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;+Attack&emsp;&emsp;&emsp;&emsp;&emsp;Damage </span>
+              <input class="sheet-attack-damage" type="text" name="attr_attack_1_damage" value="d4"/>
+        </span>
+        <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
         <span class="sheet-attack-slot">
               <input class="sheet-attack-roll4" type="number" name="attr_ranged_bonus4" value="0"/>
-              <button class="sheet-att-bon2" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_4_desc}!}} {{Combat=Ranged (Wisdom)}}{{to hit=[[1d20+@{wisdommod}+@{ranged_bonus4}]]}}' name='roll_rangedattack4'></button>
+              <button class="sheet-att-bon2" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_4_desc}!}} {{Combat=Ranged (Wisdom)}}{{to hit=[[1d20+@{wisdom}]]}}' name='roll_rangedattack4'></button>
               <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_4_desc}!}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
               <input class="sheet-attack-descr" type="text" name="attr_attack_4_desc" value="[Ranged Weapon Name]"/>
               <input class="sheet-attack-damage" type="text" name="attr_attack_4_damage" value="1d6"/>
           </span>
-        <span class="sheet-attack-slot">
-              <input class="sheet-attack-roll5" type="number" name="attr_ranged_bonus5" value="0"/>
-              <button class="sheet-att-bon2" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_5_desc}!}} {{Combat=Ranged (Wisdom)}}{{to hit=[[1d20+@{wisdommod}+@{ranged_bonus5}]]}}' name='roll_rangedattack5'></button>
-              <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_5_desc}!}} {{Dealing=[[@{attack_5_damage}]] Damage}}' name='roll_attack_5'></button>
-              <input class="sheet-attack-descr" type="text" name="attr_attack_5_desc" value="Improvised Ranged Weapon"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_5_damage" value="1d4"/>
-          </span>
-
     </div>
     <div class="sheet-notes">
-        Notes / Background
+        Careers, Notes, etc.
         <textarea name="attr_notes"></textarea>
     </div>
     <div class="sheet-slots">
-        <span class="sheet-slots-title">Equipment Slots ( Character Max Slots = <input type="number" name="attr_slots" value="@{constitution}" disabled="true"/>) 
+        <span class="sheet-slots-title">Equipment Slots ( Character Max Slots = <input type="number" name="attr_slots" value="10+@{constitution}" disabled="true"/>) 
        </span>
 
         <span class="sheet-slot">
