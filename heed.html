@@ -57,7 +57,10 @@
 	          <option value="shortbow">Shortsword</option>
 	          <option value="crossbow">Axe</option>
 	        </select>
-	        <button type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_1_desc}}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
+	        <button type="action" name="act_attack_1_btn"></button>
+
+	        <!-- Hidden attribute to track button clicks -->
+	        <input type="hidden" name="attr_attack_1_clicked" value="false">
         </span>
         <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
         <span class="sheet-attack-slot">
@@ -65,7 +68,7 @@
 	          <option value="shortbow">Shortbow</option>
 	          <option value="crossbow">Crossbow</option>
 	        </select>
-	        <button type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_4_desc}}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
+	        <button type="action" name="act_attack_4_btn"></button>
 		</span>
     </div>
     <div class="sheet-notes">
@@ -163,15 +166,17 @@
 
 
 <script type="text/worker">
-    on("change:armorbase change:hashelm change:hasshield sheet:opened", function() { 
-	    getAttrs(["armorbase","hashelm","hasshield"], function(values) {
-            let base = parseInt(values.armorbase)||10;
-            let helm = parseInt(values.hashelm)||0;
-            let shield = parseInt(values.hasshield)||0;
-            let ac = base + helm + shield;
-		    setAttrs({
-		        'actotal': ac
-		    })
-	    })
-	})
+    on("clicked:attack_1_btn", function() { 
+		getAttrs(['attack_1_clicked'], function(values) {
+			let current = values["attack_1_clicked"];
+
+			console.log(current);
+
+			let updated = !current;
+
+			setAttrs({
+				attack_1_clicked: updated
+			});
+        });
+	});
 </script>
