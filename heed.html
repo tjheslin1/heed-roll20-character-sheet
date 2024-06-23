@@ -3,14 +3,18 @@
         <span>Name:&nbsp;<input type="text" name="attr_character_name" value="Knave"/></span>
     </div>
     <div class="sheet-exp">
-        <span>Level:</span>
-        <input class="sheet-wide" type="number" name="attr_level" value="1" />
+    	<span>
+        	<span>Level:</span>
+        	<input class="sheet-wide" type="number" name="attr_level" value="1" />
         </span>
-        <span>Experience:</span>
-        <input class="sheet-wide" type="number" name="attr_exp" value="0" />
+        <span>
+	        <span>Experience:</span>
+	        <input class="sheet-wide" type="number" name="attr_exp" value="0" />
         </span>
-        <span>Coin in stash:</span>
-        <input class="sheet-wide" type="number" name="attr_gold" value="0" />
+        <span>
+	        <span>Coin in stash:</span>
+	        <input class="sheet-wide" type="number" name="attr_gold" value="0" />
+        </span>
         </span>
     </div>
     <div class="sheet-str">
@@ -49,20 +53,20 @@
     <div class="sheet-attacks">
         &nbsp;Melee Weapon
         <span class="sheet-attack-slot">
-              <input class="sheet-attack-roll1" type="number" name="attr_melee_bonus1" value="0"/>
-              <button class="sheet-att-bon" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_1_desc}}} {{Combat=Melee (Strength)}}{{to hit=[[1d8+@{strength}]]}}' name='roll_meleeattack1'></button>
-              <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_1_desc}!}} {{Dealing=[[@{attack_1_damage}]] Damage}}' name='roll_attack_1'></button>
-              <input class="sheet-attack-descr" type="text" name="attr_attack_1_desc" value="[Melee Weapon Name]"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_1_damage" value="d4"/>
+	        <select class="sheet-attack-descr" name="attr_attack_1_desc">
+	          <option value="shortbow">Shortsword</option>
+	          <option value="crossbow">Axe</option>
+	        </select>
+	        <button type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_1_desc}}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
         </span>
         <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
         <span class="sheet-attack-slot">
-              <input class="sheet-attack-roll4" type="number" name="attr_ranged_bonus4" value="0"/>
-              <button class="sheet-att-bon2" type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_4_desc}!}} {{Combat=Ranged (Wisdom)}}{{to hit=[[1d20+@{wisdom}]]}}' name='roll_rangedattack4'></button>
-              <button type='roll' value='&{template:default} {{name= @{character_name} hits with @{attack_4_desc}!}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
-              <input class="sheet-attack-descr" type="text" name="attr_attack_4_desc" value="[Ranged Weapon Name]"/>
-              <input class="sheet-attack-damage" type="text" name="attr_attack_4_damage" value="1d6"/>
-          </span>
+	        <select class="sheet-attack-descr" name="attr_attack_4_desc">
+	          <option value="shortbow">Shortbow</option>
+	          <option value="crossbow">Crossbow</option>
+	        </select>
+	        <button type='roll' value='&{template:default} {{name= @{character_name} attacks with @{attack_4_desc}}} {{Dealing=[[@{attack_4_damage}]] Damage}}' name='roll_attack_4'></button>
+		</span>
     </div>
     <div class="sheet-notes">
         Careers, Notes, etc.
@@ -153,12 +157,7 @@
           <input class="sheet-quality" type="text" name="attr_item_20_qual" value=""/>
         </span>
           <span class="sheet-slot">
-          Ring:<input class="sheet-contents"  type="text" name="attr_item_ring1_desc" value=""/>
-          <input class="sheet-quality" type="text" name="attr_item_ring2_qual" value=""/>
-        </span>
-        <span class="sheet-slot">
-          Ring:<input class="sheet-contents"  type="text" name="attr_item_ring2_desc" value=""/>
-          <input class="sheet-quality" type="text" name="attr_item_ring2_qual" value=""/>
+          Jewellery:<input class="sheet-contents"  type="text" name="attr_item_jewellery_desc" value=""/>
         </span>
     </div>
 </div>
