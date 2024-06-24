@@ -6,12 +6,9 @@ on('ready', function() {
 
             let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
             let strengthRollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
-            
-            log('charNameMatch = ' + charNameMatch);
-            log('strengthRollMatch = ' + strengthRollMatch);
 
             if (charNameMatch && strengthRollMatch) {
-                sendChat('1', 'match');
+
                 let charName = charNameMatch[1];
                 let strengthRollIndex = parseInt(strengthRollMatch[1], 10);
 
