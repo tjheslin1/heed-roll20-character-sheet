@@ -63,7 +63,7 @@ on('ready', function() {
 });
 
 const weapons = {
-    "shortsword": {
+    "Shortsword": {
         1: "No damage",
         2: "1 piercing",
         3: "2 piercing",
@@ -72,7 +72,7 @@ const weapons = {
         6: "5 piercing",
         7: "6 piercing + <i>roll again</i>",
     },
-    "axe": {
+    "Axe": {
         1: "No damage",
         2: "1 slashing",
         3: "2 slashing",
@@ -81,7 +81,7 @@ const weapons = {
         6: "5 slashing",
         7: "6 slashing + <i>Dismemberment</i>",
     },
-    "dagger": {
+    "Dagger": {
         1: "No damage",
         2: "No damage",
         3: "1 piercing",
@@ -91,7 +91,7 @@ const weapons = {
         7: "2 piercing + <i>roll again</i>",
         8: "2 piercing + <i>roll again</i>",
     },
-    "shortbow": {
+    "Shortbow": {
         1: "No damage",
         2: "1 piercing",
         3: "2 piercing",
