@@ -3,46 +3,50 @@ on('ready', function() {
         if (msg.type === 'general' && msg.content && msg.rolltemplate === 'default') {
             
             log(`Received message content: ${msg.content}`);
-
+            
             if (msg.content.includes('rolled an attack with')) {
 
                 let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
-                let strengthRollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
-
-                if (charNameMatch && strengthRollMatch) {
-
+                let rollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
+                let weaponIndexMatch = msg.content.match(/\(WeaponIndex=(\d)\)/);
+    
+                if (charNameMatch && rollMatch && weaponIndexMatch) {
+    
                     let charName = charNameMatch[1];
-                    let strengthRollIndex = parseInt(strengthRollMatch[1], 10);
-
-                    if (msg.inlinerolls && msg.inlinerolls[strengthRollIndex]) {
-                        let strengthRoll = msg.inlinerolls[strengthRollIndex].results.total;
-
+                    let rollIndex = parseInt(rollMatch[1], 10);
+                    let weaponIndex = weaponIndexMatch[1];
+                    
+                    log('weaponIndex = ' + weaponIndex);
+    
+                    if (msg.inlinerolls && msg.inlinerolls[rollIndex]) {
+                        let roll = msg.inlinerolls[rollIndex].results.total;
+                        
                         let character = findObjs({
                             _type: "character",
                             name: charName
                         })[0];
-
+                        
                         if (character) {
-                            let weapon = getAttrByName(character.id, 'attack_1_desc');
-
+                            let weapon = getAttrByName(character.id, `attack_${weaponIndex}_desc`);
+                            
                             log('weapon = ' + weapon);
 
                             let resultTable = weapons[weapon];
-
+                            
                             let keys = Object.keys(resultTable).map(Number);
                             let maxKey = Math.max(...keys);
-
+                            
                             log('maxKey = ' + maxKey);
-
-                            if (strengthRoll < 1) {
-                                strengthRoll = 1;
-                            } else if (strengthRoll > maxKey) {
-                                log('Roll of ' + strengthRoll + ' was higher than ' + maxKey)
-                                strengthRoll = maxKey;
+                            
+                            if (roll < 1) {
+                                roll = 1;
+                            } else if (roll > maxKey) {
+                                log('Roll of ' + roll + ' was higher than ' + maxKey)
+                                roll = maxKey;
                             }
-
-                            let result = resultTable[strengthRoll];
-
+                            
+                            let result = resultTable[roll];
+    
                             sendChat("Result", result);
                         } else {
                             sendChat("API", `/w gm Character not found: ${charName}`);
@@ -85,11 +89,11 @@ function getAttribute(name, charId) {
         _type: 'attribute',
         _characterid: charId
     })[0];
-
+    
     let att = null;
     if (attr) {
         att = attr.get("current");
     }
-
+    
     return att;
 }

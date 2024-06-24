@@ -57,7 +57,14 @@
 	          <option value="shortsword">Shortsword</option>
 	          <option value="axe">Axe</option>
 	        </select>
-	        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[d8 + @{strength} - ?{targets defence|0}]]}}'></button>
+	        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[d8 + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=1)'></button>
+        </span>
+        <span class="sheet-attack-slot">
+	        <select class="sheet-attack-descr" name="attr_attack_2_desc">
+	          <option value="shortsword">Shortsword</option>
+	          <option value="axe">Axe</option>
+	        </select>
+	        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[d8 + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=2)'></button>
         </span>
         <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
         <span class="sheet-attack-slot">
