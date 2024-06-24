@@ -15,11 +15,13 @@ input:disabled {
   grid-auto-rows: minmax(30px, auto);
   background: #F0EEDC;
 }
-.sheet-exp span input.sheet-wide {
-    width: 60px;
+.logo {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  text-align: left;
 }
 .sheet-heading {
-  grid-column: 1 / span 2;
+  grid-column: 3 / span 2;
   grid-row: 1;
   font-weight: bold;
   text-align: left;
@@ -32,16 +34,22 @@ input:disabled {
   grid-row: 1;
   display: grid;
   grid-gap: 3px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   font-weight: bold;
   text-align: right;
+}
+#pc-name {
+	width: 150px;
+}
+.sheet-exp span input.sheet-wide {
+    width: 60px;
 }
 .sheet-exp-1 {
   grid-column: 1 / span 2
 }
 .sheet-str {
   grid-column: 1;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -59,7 +67,7 @@ input:disabled {
   }
 .sheet-dex {
   grid-column: 2;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -68,7 +76,7 @@ input:disabled {
 }
 .sheet-con {
   grid-column: 3;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -77,7 +85,7 @@ input:disabled {
 }
 .sheet-int {
   grid-column: 4;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -86,7 +94,7 @@ input:disabled {
 }
 .sheet-wis {
   grid-column: 5;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -95,7 +103,7 @@ input:disabled {
 }
 .sheet-cha {
   grid-column: 6;
-  grid-row: 2 ;
+  grid-row: 3;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr 1fr;
@@ -110,8 +118,8 @@ input:disabled {
     border-top: thin gray solid;
 }
 .sheet-hps {
-  grid-column: 5;
-  grid-row: 3;
+  grid-column: 3;
+  grid-row: 2;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr;
@@ -134,8 +142,8 @@ input:disabled {
   background: #C39BD3;
 }
 .sheet-defence {
-  grid-column: 6 ;
-  grid-row: 3;
+  grid-column: 4;
+  grid-row: 2;
   display: grid;
   grid-gap: 3px;
   grid-template-columns: 1fr;
@@ -147,11 +155,11 @@ input:disabled {
   grid-row: 3 / 5;
 }
 .sheet-attacks {
-  grid-column: 1 / span 3;
-  grid-row: 3 / span 2;
+  grid-column: 1 / span 6;
+  grid-row: 4 / span 2;
   display: grid;
   grid-gap: 3px;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   text-align: center;
   font-weight: bold;
 
