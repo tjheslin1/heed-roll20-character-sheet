@@ -4,23 +4,55 @@ on('ready', function() {
             
             log(`Received message content: ${msg.content}`);
 
-            let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
-            let strengthRollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
+            if (msg.content.includes('rolled an attack with')) {
 
-            if (charNameMatch && strengthRollMatch) {
+                let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
+                let strengthRollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
 
-                let charName = charNameMatch[1];
-                let strengthRollIndex = parseInt(strengthRollMatch[1], 10);
+                if (charNameMatch && strengthRollMatch) {
 
-                if (msg.inlinerolls && msg.inlinerolls[strengthRollIndex]) {
-                    let strengthRoll = msg.inlinerolls[strengthRollIndex].results.total;
+                    let charName = charNameMatch[1];
+                    let strengthRollIndex = parseInt(strengthRollMatch[1], 10);
 
-                    sendChat("API", `${charName} made a strength roll: ${strengthRoll}`);
+                    if (msg.inlinerolls && msg.inlinerolls[strengthRollIndex]) {
+                        let strengthRoll = msg.inlinerolls[strengthRollIndex].results.total;
+
+                        let character = findObjs({
+                            _type: "character",
+                            name: charName
+                        })[0];
+
+                        if (character) {
+                            let weapon = getAttrByName(character.id, 'attack_1_desc');
+
+                            log('weapon = ' + weapon);
+
+                            let resultTable = weapons[weapon];
+
+                            let keys = Object.keys(resultTable).map(Number);
+                            let maxKey = Math.max(...keys);
+
+                            log('maxKey = ' + maxKey);
+
+                            if (strengthRoll < 1) {
+                                strengthRoll = 1;
+                            } else if (strengthRoll > maxKey) {
+                                log('Roll of ' + strengthRoll + ' was higher than ' + maxKey)
+                                strengthRoll = maxKey;
+                            }
+
+                            let result = resultTable[strengthRoll];
+
+                            sendChat("Result", result);
+                        } else {
+                            sendChat("API", `/w gm Character not found: ${charName}`);
+                        }
+                    } else {
+                        sendChat("API", `/w gm Could not retrieve the roll result for: ${msg.content}`);
+                    }
                 } else {
-                    sendChat("API", `Could not retrieve the roll result for: ${msg.content}`);
+                    sendChat("API", `/w gm Could not parse the roll template content: ${msg.content}`);
                 }
-            } else {
-                sendChat("API", `Could not parse the roll template content: ${msg.content}`);
             }
         }
     });
@@ -29,12 +61,21 @@ on('ready', function() {
 const weapons = {
     "shortsword": {
         1: "No damage",
-        2: "1",
-        3: "2",
-        4: "3",
-        5: "4",
-        6: "5",
-        7: "6",
+        2: "1 piercing",
+        3: "2 piercing",
+        4: "3 piercing",
+        5: "4 piercing",
+        6: "5 piercing",
+        7: "6 piercing + <i>roll again</i>",
+    },
+    "axe": {
+        1: "No damage",
+        2: "1 slashing",
+        3: "2 slashing",
+        4: "3 slashing",
+        5: "4 slashing",
+        6: "5 slashing",
+        7: "6 slashing + <i>Dismemberment</i>",
     }
 };
 
