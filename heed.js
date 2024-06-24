@@ -1,23 +1,33 @@
 on('ready', function() {
     on('chat:message', function(msg) {
-        if (msg.type === 'api' && msg.content.startsWith('!rollattack')) {
-            let rollTemplateContent = msg.content.replace('!rollattack ', '');
+        if (msg.type === 'general' && msg.content && msg.rolltemplate === 'default') {
             
-            let charNameMatch = rollTemplateContent.match(/{{name=(.*?) rolled}}/);
-            let strengthRollMatch = rollTemplateContent.match(/{{Strength=\[\[(.*?)\]\]}}/);
+            log(`Received message content: ${msg.content}`);
+
+            let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
+            let strengthRollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
+            
+            log('charNameMatch = ' + charNameMatch);
+            log('strengthRollMatch = ' + strengthRollMatch);
 
             if (charNameMatch && strengthRollMatch) {
+                sendChat('1', 'match');
                 let charName = charNameMatch[1];
-                let strengthRoll = strengthRollMatch[1];
+                let strengthRollIndex = parseInt(strengthRollMatch[1], 10);
 
-                sendChat("API", `${charName} made a strength roll: ${strengthRoll}`);
+                if (msg.inlinerolls && msg.inlinerolls[strengthRollIndex]) {
+                    let strengthRoll = msg.inlinerolls[strengthRollIndex].results.total;
+
+                    sendChat("API", `${charName} made a strength roll: ${strengthRoll}`);
+                } else {
+                    sendChat("API", `Could not retrieve the roll result for: ${msg.content}`);
+                }
             } else {
-                sendChat("API", `Could not parse the roll template content: ${rollTemplateContent}`);
+                sendChat("API", `Could not parse the roll template content: ${msg.content}`);
             }
         }
     });
 });
-
 
 const weapons = {
     "shortsword": {
