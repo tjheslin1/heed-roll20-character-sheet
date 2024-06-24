@@ -50,21 +50,35 @@
         Defence
      <span class="sheet-defence1">Num armour pieces: &nbsp;<input type="number" name="attr_defence" value="0"/></span>
     </div>
+
+	<!-- Define hidden inputs for each weapon's dice value -->
+	<input type="hidden" name="attr_attack_1_dice" value="d4">
+	<input type="hidden" name="attr_attack_2_dice" value="d4">
+	<input type="hidden" name="attr_attack_4_dice" value="d4">
+	<input type="hidden" name="attr_attack_5_dice" value="d4">
+
+	<input type="hidden" name="attr_shortsword_dice" value="d4">
+	<input type="hidden" name="attr_axe_dice" value="d4">
+	<input type="hidden" name="attr_dagger_dice" value="d8">
+	<input type="hidden" name="attr_shortbow_dice" value="d4">
+
     <div class="sheet-attacks">
         &nbsp;Melee Weapon
         <span class="sheet-attack-slot">
 	        <select class="sheet-attack-descr" name="attr_attack_1_desc">
 	          <option value="shortsword">Shortsword</option>
 	          <option value="axe">Axe</option>
+	          <option value="dagger">Dagger</option>
 	        </select>
-	        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[d8 + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=1)'></button>
+	        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[@{attack_1_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=1)'></button>
         </span>
         <span class="sheet-attack-slot">
 	        <select class="sheet-attack-descr" name="attr_attack_2_desc">
 	          <option value="shortsword">Shortsword</option>
 	          <option value="axe">Axe</option>
+	          <option value="dagger">Dagger</option>
 	        </select>
-	        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[d8 + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=2)'></button>
+	        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[@{attack_2_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=2)'></button>
         </span>
         <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
         <span class="sheet-attack-slot">
@@ -72,7 +86,14 @@
 	          <option value="shortbow">Shortbow</option>
 	          <option value="crossbow">Crossbow</option>
 	        </select>
-	        <button type="action" name="act_attack_4_btn"></button>
+	        <button type="roll" name="act_attack_4_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Wisdom:=[[@{attack_4_dice} + @{wisdom} - ?{targets defence|0}]]}} (WeaponIndex=4)'></button>
+		</span>
+        <span class="sheet-attack-slot">
+	        <select class="sheet-attack-descr" name="attr_attack_5_desc">
+	          <option value="shortbow">Shortbow</option>
+	          <option value="crossbow">Crossbow</option>
+	        </select>
+	        <button type="roll" name="act_attack_5_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Wisdom:=[[@{attack_5_dice} + @{wisdom} - ?{targets defence|0}]]}} (WeaponIndex=5)'></button>
 		</span>
     </div>
     <div class="sheet-notes">
@@ -170,17 +191,32 @@
 
 
 <script type="text/worker">
-    on("clicked:attack_1_btn", function() { 
-		getAttrs(['attack_1_clicked'], function(values) {
-			let current = values["attack_1_clicked"];
-
-			console.log(current);
-
-			let updated = !current;
-
-			setAttrs({
-				attack_1_clicked: updated
-			});
+    const setDiceValue = (attackNum, weapon) => {
+        getAttrs([`${weapon}_dice`], function(values) {
+            let weaponDice = values[`${weapon}_dice`] || "d4";
+            setAttrs({
+                [`attack_${attackNum}_dice`]: weaponDice
+            });
         });
-	});
+    };
+
+    on("change:attack_1_desc", function(eventInfo) {
+        const weapon = eventInfo.newValue;
+        setDiceValue(1, weapon);
+    });
+
+    on("change:attack_2_desc", function(eventInfo) {
+        const weapon = eventInfo.newValue;
+        setDiceValue(2, weapon);
+    });
+
+    on("change:attack_4_desc", function(eventInfo) {
+        const weapon = eventInfo.newValue;
+        setDiceValue(4, weapon);
+    });
+
+    on("change:attack_5_desc", function(eventInfo) {
+        const weapon = eventInfo.newValue;
+        setDiceValue(5, weapon);
+    });
 </script>
