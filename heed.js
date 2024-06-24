@@ -7,13 +7,13 @@ on('ready', function() {
             if (msg.content.includes('rolled an attack with')) {
 
                 let charNameMatch = msg.content.match(/{{name=(.*?)}}/);
-                let rollMatch = msg.content.match(/{{Strength:=\$\[\[(\d+)\]\]}}/);
+                let rollMatch = msg.content.match(/{{(Strength|Wisdom):=\$\[\[(\d+)\]\]}}/);
                 let weaponIndexMatch = msg.content.match(/\(WeaponIndex=(\d)\)/);
     
                 if (charNameMatch && rollMatch && weaponIndexMatch) {
     
                     let charName = charNameMatch[1];
-                    let rollIndex = parseInt(rollMatch[1], 10);
+                    let rollIndex = parseInt(rollMatch[2], 10);
                     let weaponIndex = weaponIndexMatch[1];
                     
                     log('weaponIndex = ' + weaponIndex);
@@ -80,7 +80,26 @@ const weapons = {
         5: "4 slashing",
         6: "5 slashing",
         7: "6 slashing + <i>Dismemberment</i>",
-    }
+    },
+    "dagger": {
+        1: "No damage",
+        2: "No damage",
+        3: "1 piercing",
+        4: "1 piercing",
+        5: "1 piercing",
+        6: "1 piercing",
+        7: "2 piercing + <i>roll again</i>",
+        8: "2 piercing + <i>roll again</i>",
+    },
+    "shortbow": {
+        1: "No damage",
+        2: "1 piercing",
+        3: "2 piercing",
+        4: "3 piercing",
+        5: "4 piercing",
+        6: "5 piercing",
+        7: "6 piercing + <i>roll again</i>",
+    },
 };
 
 function getAttribute(name, charId) {
