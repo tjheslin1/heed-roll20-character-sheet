@@ -3,22 +3,12 @@ on('ready', function() {
     on('change:attribute', (obj) => {
         if (obj.get('name') === 'attack_1_clicked') {
             let characterId = obj.get('_characterid');
-            // let weapon = obj.get('attack_1_desc');
             
-            let attr = findObjs({
-                name: 'attack_1_desc',
-                _type: 'attribute',
-                _characterid: characterId
-            })[0];
-            
-            console.log(attr);
-            
-            let att = null;
-            if (attr) {
-                att = attr.get("current");
-            }
+            let att = getAttribute('attack_1_desc', characterId)
 
-            sendChat(characterId, "clickeded " + obj.attack_1_desc + " " + att);
+            let characterName = getObj('character', characterId).get('name');
+
+            sendChat(characterName, att);
         };
     });
 });
@@ -34,3 +24,18 @@ const weapons = {
         7: "6",
     }
 };
+
+function getAttribute(name, charId) {
+    let attr = findObjs({
+        name: name,
+        _type: 'attribute',
+        _characterid: charId
+    })[0];
+
+    let att = null;
+    if (attr) {
+        att = attr.get("current");
+    }
+
+    return att;
+}
