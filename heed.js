@@ -1,17 +1,23 @@
 on('ready', function() {
-    
-    on('change:attribute', (obj) => {
-        if (obj.get('name') === 'attack_1_clicked') {
-            let characterId = obj.get('_characterid');
+    on('chat:message', function(msg) {
+        if (msg.type === 'api' && msg.content.startsWith('!rollattack')) {
+            let rollTemplateContent = msg.content.replace('!rollattack ', '');
             
-            let att = getAttribute('attack_1_desc', characterId)
+            let charNameMatch = rollTemplateContent.match(/{{name=(.*?) rolled}}/);
+            let strengthRollMatch = rollTemplateContent.match(/{{Strength=\[\[(.*?)\]\]}}/);
 
-            let characterName = getObj('character', characterId).get('name');
+            if (charNameMatch && strengthRollMatch) {
+                let charName = charNameMatch[1];
+                let strengthRoll = strengthRollMatch[1];
 
-            sendChat(characterName, att);
-        };
+                sendChat("API", `${charName} made a strength roll: ${strengthRoll}`);
+            } else {
+                sendChat("API", `Could not parse the roll template content: ${rollTemplateContent}`);
+            }
+        }
     });
 });
+
 
 const weapons = {
     "shortsword": {

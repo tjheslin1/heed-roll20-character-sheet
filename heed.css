@@ -190,6 +190,12 @@ input:disabled {
   grid-row: 1;
   background: #EC7063;
 }
+#test_butn {
+  width: 20px;
+  grid-column: 3;
+  grid-row: 1;
+  background: #EC7063;
+}
 .sheet-attacks .sheet-attack-slot button.sheet-att-bon {
   width: 20px;
   grid-column: 3;
