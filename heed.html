@@ -69,46 +69,75 @@
 	<input type="hidden" name="attr_attack_4_dice" value="d4">
 	<input type="hidden" name="attr_attack_5_dice" value="d4">
 
+	<input type="hidden" name="attr_Unarmed_dice" value="d8">
 	<input type="hidden" name="attr_Shortsword_dice" value="d4">
 	<input type="hidden" name="attr_Axe_dice" value="d4">
 	<input type="hidden" name="attr_Dagger_dice" value="d8">
+	<input type="hidden" name="attr_Flail_dice" value="d4">
+	<input type="hidden" name="attr_Broadsword_dice" value="d4">
+	<input type="hidden" name="attr_TwoShortswords_dice" value="d4">
+	<input type="hidden" name="attr_Battleaxe_dice" value="d6">
+	<input type="hidden" name="attr_Warhammer_dice" value="d6">
+	<input type="hidden" name="attr_Flamberge_dice" value="d6">
+	<input type="hidden" name="attr_Anastasia_dice" value="d6">
+
+	<input type="hidden" name="attr_Sling_dice" value="d4">
 	<input type="hidden" name="attr_Shortbow_dice" value="d4">
+	<input type="hidden" name="attr_Crossbow_dice" value="d4">
 
     <div class="sheet-attacks">
 		<span>
         	&nbsp;Melee Weapon
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_1_desc">
+		          <option value="Unarmed">Unarmed</option>
 		          <option value="Shortsword">Shortsword</option>
 		          <option value="Axe">Axe</option>
 		          <option value="Dagger">Dagger</option>
+		          <option value="Flail">Flail</option>
+		          <option value="Broadsword">Broadsword</option>
+		          <option value="TwoShortswords">Two Shortswords</option>
+		          <option value="Battleaxe">Battleaxe</option>
+		          <option value="Warhammer">Warhammer</option>
+		          <option value="Flamberge">Flamberge</option>
+		          <option value="Anastasia">Anastasia</option>
 		        </select>
-		        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[@{attack_1_dice} + @{strength} - ?{targets defence|0}]]}} {{Weapon=@{attack_1_desc}}} (WeaponIndex=1)'></button>
+		        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Weapon=@{attack_1_desc}}} {{Strength:=[[@{attack_1_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=1)'></button>
 	        </span>
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_2_desc">
+		          <option value="Unarmed">Unarmed</option>
 		          <option value="Shortsword">Shortsword</option>
 		          <option value="Axe">Axe</option>
 		          <option value="Dagger">Dagger</option>
+		          <option value="Flail">Flail</option>
+		          <option value="Broadsword">Broadsword</option>
+		          <option value="TwoShortswords">Two Shortswords</option>
+		          <option value="Battleaxe">Battleaxe</option>
+		          <option value="Warhammer">Warhammer</option>
+		          <option value="Flamberge">Flamberge</option>
+		          <option value="Anastasia">Anastasia</option>
 		        </select>
-		        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Strength:=[[@{attack_2_dice} + @{strength} - ?{targets defence|0}]]}} {{Weapon=@{attack_2_desc}}} (WeaponIndex=2)'></button>
+		        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Weapon=@{attack_2_desc}}} {{Strength:=[[@{attack_2_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=2)'></button>
 	        </span>
         </span>
         <span>
 	        <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_4_desc">
+		          <option value="Sling">Sling</option>
 		          <option value="Shortbow">Shortbow</option>
 		          <option value="Crossbow">Crossbow</option>
 		        </select>
-		        <button type="roll" name="act_attack_4_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Wisdom:=[[@{attack_4_dice} + @{wisdom} - ?{targets defence|0}]]}} {{Weapon=@{attack_4_desc}}} (WeaponIndex=4)'></button>
+		        <button type="roll" name="act_attack_4_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Weapon=@{attack_4_desc}}} {{Wisdom:=[[@{attack_4_dice} + @{wisdom} - ?{targets defence|0}]]}} (WeaponIndex=4)'></button>
 			</span>
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_5_desc">
+		          <option value="Sling">Sling</option>
 		          <option value="Shortbow">Shortbow</option>
 		          <option value="Crossbow">Crossbow</option>
 		        </select>
-		        <button type="roll" name="act_attack_5_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Wisdom:=[[@{attack_5_dice} + @{wisdom} - ?{targets defence|0}]]}} {{Weapon=@{attack_5_desc}}} (WeaponIndex=5)'></button>
+		        <button type="roll" name="act_attack_5_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Wisdom: {{Weapon=@{attack_5_desc}}} {{Wisdom:=[[@{attack_5_dice} + @{wisdom} - ?{targets defence|0}]]}} (WeaponIndex=5)'></button>
 			</span>
 		</span>
     </div>
