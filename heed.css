@@ -36,13 +36,10 @@ input:disabled {
   grid-gap: 3px;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   font-weight: bold;
-  text-align: right;
+  text-align: center;
 }
-#pc-name {
-	width: 150px;
-}
-.sheet-exp span input.sheet-wide {
-    width: 60px;
+.sheet-exp span input {
+    width: 100%;
 }
 .sheet-exp-1 {
   grid-column: 1 / span 2

@@ -31,7 +31,13 @@ on('ready', function() {
                             
                             log('weapon = ' + weapon);
 
-                            let resultTable = weapons[weapon];
+                            let resultTable;
+                            if (weapons[weapon] !== undefined) {
+                                resultTable = weapons[weapon];
+                            } else {
+                                sendChat("API", `/w gm Weapon lookup failed for: ${weapon}`);
+                                return;
+                            }
                             
                             let keys = Object.keys(resultTable).map(Number);
                             let maxKey = Math.max(...keys);
