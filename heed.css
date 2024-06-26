@@ -250,7 +250,7 @@ input:disabled {
   grid-column: span 2;
   font-weight: bold;
   text-align: center;
-  height: 40px;
+  /* height: 60px; */
 }
 .sheet-slots-wide {
   grid-column: 3 / span 4;
