@@ -97,6 +97,8 @@
 	<input type="hidden" name="attr_Warhammer_dice" value="d6">
 	<input type="hidden" name="attr_Flamberge_dice" value="d6">
 	<input type="hidden" name="attr_Anastasia_dice" value="d6">
+	<input type="hidden" name="attr_Spear_dice" value="d6">
+	<input type="hidden" name="attr_KastromancersSpear_dice" value="d6">
 
 	<input type="hidden" name="attr_Sling_dice" value="d4">
 	<input type="hidden" name="attr_Shortbow_dice" value="d4">
@@ -118,6 +120,8 @@
 		          <option value="Warhammer">Warhammer</option>
 		          <option value="Flamberge">Flamberge</option>
 		          <option value="Anastasia">Anastasia</option>
+		          <option value="Spear">Spear</option>
+		          <option value="KastromancersSpear">KastromancersSpear</option>
 		        </select>
 		        <button type="roll" name="act_attack_1_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Weapon=@{attack_1_desc}}} {{Strength:=[[@{attack_1_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=1)'></button>
 	        </span>
@@ -134,6 +138,8 @@
 		          <option value="Warhammer">Warhammer</option>
 		          <option value="Flamberge">Flamberge</option>
 		          <option value="Anastasia">Anastasia</option>
+		          <option value="Spear">Spear</option>
+		          <option value="KastromancersSpear">KastromancersSpear</option>
 		        </select>
 		        <button type="roll" name="act_attack_2_btn" value='&{template:default} {{name=@{character_name}}} rolled an attack with Strength: {{Weapon=@{attack_2_desc}}} {{Strength:=[[@{attack_2_dice} + @{strength} - ?{targets defence|0}]]}} (WeaponIndex=2)'></button>
 	        </span>

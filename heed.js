@@ -165,7 +165,7 @@ const weapons = {
         9: "10 slashing + <i>Sweep</i>",
     },
     "Anastasia": {
-        1: "Wielder is temporarily possessed by the trapped soul inside Anastasia and takes 2 necrotic (direct)",
+        1: "Wielder is temporarily possessed by the trapped soul inside Anastasia and takes d4 necrotic (self)",
         2: "Wielder reels and takes 1 necrotic (self)",
         3: "5 slashing",
         4: "6 slashing",
@@ -174,6 +174,28 @@ const weapons = {
         7: "9 slashing + 1 necrotic siphoned from trapped soul",
         8: "9 slashing + 2 necrotic siphoned from trapped soul",
         9: "9 slashing + 3 necrotic siphoned from trapped soul; target makes a WIS check looking to meet or beat current trapped soul's HP, on fail the new target’s soul is trapped within Anastaysia--a previous trapped soul is lost.",
+    },
+    "Spear": {
+        1: "No damage",
+        2: "No damage",
+        3: "3 piercing",
+        4: "4 piercing",
+        5: "5 piercing",
+        6: "6 piercing",
+        7: "7 piercing + <i>Impale</i>",
+        8: "8 piercing + <i>Impale</i>",
+        9: "9 piercing + <i>Impale</i>"
+    },
+    "KastromancersSpear": {
+        1: "No damage",
+        2: "No damage",
+        3: "4 piercing",
+        4: "5 piercing",
+        5: "6 piercing",
+        6: "7 piercing",
+        7: "8 piercing + <i>Hyperbolic impale</i>",
+        8: "9 piercing + <i>Hyperbolic impale</i>",
+        9: "10 piercing + <i>Hyperbolic impale</i>"
     },
     "Sling": {
         1: "No damage",
