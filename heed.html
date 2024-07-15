@@ -37,7 +37,23 @@
     		<input type="number" name="attr_magic_defence" value="0"/>
    		</span>
     </div>
-
+	<div class="sheet-spell-slots">
+		<span>Spell memorisation</span>
+		<span style="font-size: 10px;"><i>Num usable slots = INT</i></span>
+		<span>
+			<input id="spell_slot_1" name="attr_spell_slot_1" type="checkbox" />
+			<input id="spell_slot_2" name="attr_spell_slot_2" type="checkbox" />
+			<input id="spell_slot_3" name="attr_spell_slot_3" type="checkbox" />
+			<input id="spell_slot_4" name="attr_spell_slot_4" type="checkbox" />
+			<input id="spell_slot_5" name="attr_spell_slot_5" type="checkbox" />
+			<br />
+			<input id="spell_slot_6" name="attr_spell_slot_6" type="checkbox" />
+			<input id="spell_slot_7" name="attr_spell_slot_7" type="checkbox" />
+			<input id="spell_slot_8" name="attr_spell_slot_8" type="checkbox" />
+			<input id="spell_slot_9" name="attr_spell_slot_9" type="checkbox" />
+			<input id="spell_slot_10" name="attr_spell_slot_10" type="checkbox" />
+		</span>
+	</div>
     <div class="sheet-str">
         <span class="sheet-att-name">Str:&nbsp;<input type="number" name="attr_strength" value="0"/></span>
         <span class="sheet-att-bon"><button type='roll' value='&{template:default} {{name=@{character_name} rolled STR}} {{Strength:=[[1d8 + @{strength}]]}}' name='roll_strcheck' /></span>
@@ -66,9 +82,10 @@
 	<!-- Define hidden inputs for each weapon's dice value -->
 	<input type="hidden" name="attr_attack_1_dice" value="d8">
 	<input type="hidden" name="attr_attack_2_dice" value="d8">
-	<input type="hidden" name="attr_attack_4_dice" value="d4">
-	<input type="hidden" name="attr_attack_5_dice" value="d4">
+	<input type="hidden" name="attr_attack_4_dice" value="d1">
+	<input type="hidden" name="attr_attack_5_dice" value="d1">
 
+	<input type="hidden" name="attr_None_dice" value="d1">
 	<input type="hidden" name="attr_Unarmed_dice" value="d8">
 	<input type="hidden" name="attr_Shortsword_dice" value="d4">
 	<input type="hidden" name="attr_Axe_dice" value="d4">
@@ -125,6 +142,7 @@
 	        <span class="sheet-top-break">&nbsp;Ranged Weapon</span>
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_4_desc">
+		          <option value="None">None</option>
 		          <option value="Sling">Sling</option>
 		          <option value="Shortbow">Shortbow</option>
 		          <option value="Crossbow">Crossbow</option>
@@ -133,6 +151,7 @@
 			</span>
 	        <span class="sheet-attack-slot">
 		        <select class="sheet-attack-descr" name="attr_attack_5_desc">
+		          <option value="None">None</option>
 		          <option value="Sling">Sling</option>
 		          <option value="Shortbow">Shortbow</option>
 		          <option value="Crossbow">Crossbow</option>

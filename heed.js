@@ -41,7 +41,6 @@ on('ready', function() {
                             if (roll < 1) {
                                 roll = 1;
                             } else if (roll > maxKey) {
-                                log('Roll of ' + roll + ' was higher than ' + maxKey)
                                 roll = maxKey;
                             }
                             
@@ -63,6 +62,9 @@ on('ready', function() {
 });
 
 const weapons = {
+    "None": {
+        1: "No damage",
+    },
     "Unarmed": {
         1: "No damage",
         2: "No damage",
