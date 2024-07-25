@@ -53,7 +53,7 @@ on('ready', function() {
                                 sendChat("API", `/w gm Weapon Dice lookup failed for: ${weapon}`);
                                 return;
                             }
-                            
+
                             sendChat("Result", result);
 
                             rollAgain(weaponDie, resultTable, result);
@@ -72,7 +72,7 @@ on('ready', function() {
 });
 
 function rollDice(sides) {
-  return Math.floor(Math.random() * (sides - 1) ) + 1;
+  return Math.floor(Math.random() * sides) + 1;
 }
 
 function rollAgain(weaponDie, resultTable, result) {
@@ -81,9 +81,10 @@ function rollAgain(weaponDie, resultTable, result) {
         let newResult = resultTable[roll];
 
         sendChat("Result", newResult);
-        rollAgain(weaponDie, resultTable, newResult);
+
+        return rollAgain(weaponDie, resultTable, newResult);
     } else {
-        return
+        return;
     }
 }
 
@@ -105,7 +106,7 @@ const weaponDice = {
     "Sling": 4,
     "Shortbow": 4,
     "Crossbow": 4
-}
+};
 
 const weapons = {
     "None": {
