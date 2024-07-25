@@ -45,8 +45,18 @@ on('ready', function() {
                             }
                             
                             let result = resultTable[roll];
-    
+
+                            let weaponDie;
+                            if (weaponDice[weapon] !== undefined) {
+                                weaponDie = weaponDice[weapon];
+                            } else {
+                                sendChat("API", `/w gm Weapon Dice lookup failed for: ${weapon}`);
+                                return;
+                            }
+                            
                             sendChat("Result", result);
+
+                            rollAgain(weaponDie, resultTable, result);
                         } else {
                             sendChat("API", `/w gm Character not found: ${charName}`);
                         }
@@ -60,6 +70,42 @@ on('ready', function() {
         }
     });
 });
+
+function rollDice(sides) {
+  return Math.floor(Math.random() * (sides - 1) ) + 1;
+}
+
+function rollAgain(weaponDie, resultTable, result) {
+    if (result.includes("roll again")) {
+        let roll = rollDice(weaponDie);
+        let newResult = resultTable[roll];
+
+        sendChat("Result", newResult);
+        rollAgain(weaponDie, resultTable, newResult);
+    } else {
+        return
+    }
+}
+
+const weaponDice = {
+    "None": 1,
+    "Unarmed": 8,
+    "Shortsword": 4,
+    "Axe": 4,
+    "Dagger": 8,
+    "Flail":4,
+    "Broadsword": 4,
+    "TwoShortswords": 4,
+    "Battleaxe": 6,
+    "Warhammer": 6,
+    "Flamberge": 6,
+    "Anastasia": 6,
+    "Spear": 6,
+    "KastromancersSpear": 6,
+    "Sling": 4,
+    "Shortbow": 4,
+    "Crossbow": 4
+}
 
 const weapons = {
     "None": {
