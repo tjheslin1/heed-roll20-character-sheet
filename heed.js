@@ -103,9 +103,11 @@ const weaponDice = {
     "Anastasia": 6,
     "Spear": 6,
     "KastromancersSpear": 6,
+    "G----H-----": 4,
+    "G----C-----": 4,
     "Sling": 4,
     "Shortbow": 4,
-    "Crossbow": 4
+    "Crossbow": 4,
 };
 
 const weapons = {
@@ -231,7 +233,7 @@ const weapons = {
         6: "6 piercing",
         7: "7 piercing + <i>Impale</i>",
         8: "8 piercing + <i>Impale</i>",
-        9: "9 piercing + <i>Impale</i>"
+        9: "9 piercing + <i>Impale</i>",
     },
     "KastromancersSpear": {
         1: "No damage",
@@ -242,7 +244,29 @@ const weapons = {
         6: "7 piercing",
         7: "8 piercing + <i>Hyperbolic impale</i>",
         8: "9 piercing + <i>Hyperbolic impale</i>",
-        9: "10 piercing + <i>Hyperbolic impale</i>"
+        9: "10 piercing + <i>Hyperbolic impale</i>",
+    },
+    "G----H-----": {
+        1: "No damage",
+        2: "No damage",
+        3: "No damage",
+        4: "2 bludgeoning",
+        5: "4 bludgeoning",
+        6: "6 bludgeoning",
+        7: "9 bludgeoning + <i>Slam</i>",
+        8: "12 bludgeoning + <i>Slam</i>",
+        9: "15 bludgeoning + <i>Slam</i>",
+        10: "18 bludgeoning + <i>Slam</i>",
+    },
+    "G----C-----": {
+        1: "No damage",
+        2: "No damage",
+        3: "No damage",
+        4: "3 piercing",
+        5: "4 piercing",
+        6: "5 piercing",
+        7: "6 piercing + <i>Crack</i>",
+        8: "7 piercing + <i>Crack</i>",
     },
     "Sling": {
         1: "No damage",
